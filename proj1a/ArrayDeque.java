@@ -1,3 +1,9 @@
+/**
+ * @author HuapengZhou
+ * resize method undone
+ * @param <T>
+ */
+
 public class ArrayDeque <T>{
     private T[] item = (T[]) new Object[8];
     private int size;
@@ -31,14 +37,11 @@ public class ArrayDeque <T>{
         size -= 1;
         nextFirst += 1;
         if(size == item.length / (2 * refector)){
-            resize(size / refector, nextFirst + 1, nextLast - 1);
+            resize(size / refector);
         }
     }
-    private void resize(int newSize, int startIndex, int endIndex){
+    private void resize(int newSize){
         T[] newItem = (T[]) new Object[newSize];
-        if (startIndex <= endIndex){
-
-        }
         System.arraycopy(item, 0, newItem, 0, size);
         size = newSize;
         item = newItem;
@@ -48,7 +51,7 @@ public class ArrayDeque <T>{
         nextFirst -= 1;
         size += 1;
         if (size == item.length){
-            resize(size * refector, 0, 0);
+            resize(size * refector);
         }
         if (nextFirst == -1){
             nextFirst = item.length - 1;
